@@ -55,6 +55,7 @@ def VM_Creation():
     global vms
     for pmid, ip  in pm_ips.iteritems():
 	if ip == pm_final:
+            vm[i]['pmid'] = pmid
             if pmid in check:
                 vms[pmid].append(i)
             else:
