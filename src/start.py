@@ -55,13 +55,13 @@ def VM_Creation():
     global vms
     for pmid, ip  in pm_ips.iteritems():
 	if ip == pm_final:
+            vm[i]['pmid'] = pmid
             if pmid in check:
                 vms[pmid].append(i)
             else:
                 vms[pmid] =[]
                 vms[pmid].append(i)
                 check[pmid] = 1
-                vm[i]['pmid'] = pmid
     vm[i]['instance'] = vm_type_id
 
     xml = """<domain type='qemu' id='%d'>
@@ -170,11 +170,11 @@ def PM_Query():
     os.system("ssh " + pmip +" df -k | grep 1 | awk '{ print $2}' | head -2 | tail -1 >> file")
     f = open("file", "r")
     pm_capacity={}
-    pm_total['cpu'] = f.readline().strip("\n")
-    pm_total['ram'] = f.readline().strip("\n")
-    pm_total['disk'] = f.readline().strip("\n")
+    pm_capacity['cpu'] = f.readline().strip("\n")
+    pm_capacity['ram'] = f.readline().strip("\n")
+    pm_capacity['disk'] = f.readline().strip("\n")
     os.system("rm -rf file")
-    tvms = vms[pmip]
+    tvms = vms[pmid]
     return jsonify(pmid = pmid, capacity = pm_capacity , free = pm_free ,vms = tvms)
 
 

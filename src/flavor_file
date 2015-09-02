@@ -4,19 +4,19 @@
         {
             "tid": 1,
             "cpu": 1,
-            "ram": 512,
+            "ram": 1,
             "disk": 1
         },
         {
             "tid": 2,
             "cpu": 2,
-            "ram": 1024,
+            "ram": 2,
             "disk": 2
         },
         {
             "tid": 3,
             "cpu": 4,
-            "ram": 2048,
+            "ram": 3,
             "disk": 3
         }
     ]
